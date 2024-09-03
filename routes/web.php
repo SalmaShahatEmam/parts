@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Site\BlogController;
 use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\ProjectController;
+use App\Http\Controllers\Site\ServicesController;
 use App\Http\Controllers\Site\StaticPageController;
 
 /*
@@ -34,7 +37,10 @@ Route::namespace('Site')->name('site.')->middleware('lang')->group(function () {
 
 
     //-------------------------------- Services Page Routes ------------------------------//
-    Route::get('services', [StaticPageController::class,'services'])->name('services');
+    Route::get('services', [ServicesController::class,'index'])->name('services');
+    Route::get('services/show/{slug}', [ServicesController::class,'show'])->name('services.show');
+    Route::get('services/order/{slug}', [ServicesController::class,'order'])->name('services.order');
+    Route::post('services/order', [ServicesController::class,'order_request'])->name('services.order.request');
     //---------------------------------- End Services Page Routes ------------------------------//
 
 
@@ -45,12 +51,14 @@ Route::namespace('Site')->name('site.')->middleware('lang')->group(function () {
 
 
     //----------------------------------- Projects Page Routes ------------------------------//
-    Route::get('projects', [StaticPageController::class,'projects'])->name('projects');
+    Route::get('projects', [ProjectController ::class,'index'])->name('projects');
+    Route::get('projects/show/{slug}', [ProjectController ::class,'show'])->name('projects.show');
     //----------------------------------- End Projects Page Routes ------------------------------//
 
 
     //----------------------------------- Blog Page Routes ------------------------------//
-    Route::get('blogs', [StaticPageController::class,'blogs'])->name('blogs');
+    Route::get('blogs', [BlogController ::class,'index'])->name('blogs');
+    Route::get('blogs/show/{slug}', [BlogController ::class,'show'])->name('blogs.show');
     //----------------------------------- End Blog Page Routes ------------------------------//
 
     //----------------------------------- Partners Page Routes ------------------------------//
@@ -60,6 +68,11 @@ Route::namespace('Site')->name('site.')->middleware('lang')->group(function () {
     //------------------------------------ Regulations Page Routes ------------------------------//
     Route::get('regulations', [StaticPageController::class,'regulations'])->name('regulations');
     //------------------------------------ End Regulations Page Routes ------------------------------//
+
+
+    //------------------------------------ Contracts Platform Page Routes ------------------------------//
+    Route::get('contracts-platform', [StaticPageController::class,'contracts_platform'])->name('contracts.platform');
+    //------------------------------------ End Contracts Platform Page Routes ------------------------------//
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Models\Blog;
+use App\Models\Team;
 use App\Models\Partner;
 use App\Models\Project;
 use App\Models\Service;
@@ -21,43 +22,36 @@ class StaticPageController extends Controller
 {
     public function about()
     {
-        $setting = app(GeneralSettings::class);
-        return view('site.about', compact('setting'));
+        $teams = Team::all();
+        return view('site.about', compact('teams'));
     }
 
-    public function services()
+
+
+
+
+    public function partners()
     {
-        $services = Service::all();
-
-        return view('site.services');
-    }
-
-    public function projects()
-    {
-        $services = Project::all();
-
-        return view('site.services');
-    }
-    public function blogs(){
-        $blogs = Blog::all();
-        return view('site.blogs');
-    }
-
-    public function partners(){
         $partners = Partner::all();
-        return view('site.partners',compact('partners'));
+        return view('site.partners.index', compact('partners'));
     }
 
-    public function regulations(){
-        $category = RegulationCategory::all();
-        return view('site.regulations',compact('regulations'));
+    public function regulations()
+    {
+        $regulationsCategory = RegulationCategory::whereHas('regulations')->withCount('regulations')->latest()->get();
+
+        return view('site.regulations.index', compact('regulationsCategory'));
+    }
+
+    public function contracts_platform()
+    {
+        $contracts = Institute::all();
+        return view('site.contracts_platform', compact('contracts'));
     }
 
 
-      public function contact()
+    public function contact()
     {
         return view('site.contact');
     }
-
-
 }

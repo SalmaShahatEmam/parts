@@ -60,7 +60,7 @@
         <li><a class="{{ isActiveRoute('site.blogs') }}" href="{{ route('site.blogs') }}"  >{{ __('المدونة') }}</a></li>
         <li><a class="{{ isActiveRoute('site.partners') }}" href="{{ route('site.partners') }}"  >{{ __('شركاء النجاح') }}</a></li>
         <li><a class="{{ isActiveRoute('site.regulations') }}" href="{{ route('site.regulations') }}"  >{{ __('اللوائح والسياسات') }}</a></li>
-        <li><a class="{{ isActiveRoute('site.about') }}" href="{{ route('site.about') }}"  >{{ __('منصة العقود') }}</a></li>
+        <li><a class="{{ isActiveRoute('site.contracts.platform') }}" href="{{ route('site.contracts.platform') }}"  >{{ __('منصة العقود') }}</a></li>
         <li><a class="{{ isActiveRoute('site.contact') }}" href="{{ route('site.contact') }}"  >{{ __('تواصل معنا') }}</a></li>
       </ul>
     </div>

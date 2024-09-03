@@ -27,7 +27,7 @@
 <style>
     .error {
         color: red;
-        font-size: 11px;
+        font-size: 15px;
         display: flex;
 
     }
@@ -52,20 +52,20 @@
     }
 
     .custom-pagination a {
-        background-color: #fff;
-        border: 1px solid #B3B8B9;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        color: #999999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    background-color: cornflowerblue;
+    border: 1px solid #B3B8B9;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
     .custom-pagination a:hover,
     .custom-pagination .active a {
         border-color: var(--color-Primary2);
-        color: red background-color: var(--color-Primary2);
+        color: white background-color: var(--color-Primary2);
     }
 </style>

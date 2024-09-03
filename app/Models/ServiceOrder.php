@@ -10,14 +10,15 @@ class ServiceOrder extends Model
     use HasFactory;
 
     protected $fillable = [
-        'service_name',
+        'service_name_ar',
+        'service_name_en',
         'is_replay',
         'name',
         'email',
         'phone',
-        'whatsapp',
-        'best_contact_method',
+        'title_message',
         'message',
+        'code'
     ];
 }
 

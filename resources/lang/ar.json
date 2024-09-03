@@ -431,7 +431,21 @@
     "Total Contacts Us" : "إجمالي رسائل التواصل",
     "Description Footer (Arabic)" : "وصف الفوتر (بالعربية)",
     "Description Footer (English)" : "وصف الفوتر (بالإنجليزية)",
-    "Logo Footer" : "شعار الفوتر"
+    "Logo Footer" : "شعار الفوتر",
+    "Sliders , Team and Partners Data" : "بيانات السلايدر والفريق والشركاء",
+    "Team" : "فريق العمل",
+    "Teams" : "فرق العمل",
+    "Team Information" : "معلومات الفريق",
+    "This is the main information about the team." : "هذه هي المعلومات الرئيسية حول الفريق.",
+    "This is the job title information about the team." : "هذه هي معلومات عنوان الوظيفة حول الفريق.",
+    "Job Title Information" : "معلومات عنوان الوظيفة",
+    "This is the images information about the team." : "هذه هي معلومات الصور حول الفريق.",
+    "Team Created Successfully" : "تم إنشاء الفريق بنجاح",
+    "Team Updated Successfully" : "تم تحديث الفريق بنجاح",
+    "job_title_ar" : "المسمى الوظيفي بالعربية",
+    "job_title_en" : "المسمى الوظيفي بالإنجليزية",
+    "seo_title_ar" : "العنوان الفرعي بالعربية",
+    "seo_title_en" : "العنوان الفرعي بالإنجليزية"
 
 
 

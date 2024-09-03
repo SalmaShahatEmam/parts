@@ -48,6 +48,7 @@ class AdminPanelProvider extends PanelProvider
 
 
             ->databaseNotifications(true)
+            ->databaseNotificationsPolling('1s')
 
             ->colors([
                 'primary' => [

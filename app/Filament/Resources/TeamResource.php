@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\TeamResource\Pages;
 use Filament\Tables;
-use App\Models\Slider;
-use App\Models\Service;
+use App\Models\Team;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
@@ -18,14 +18,13 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Filters\TrashedFilter;
-use App\Filament\Resources\SliderResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SliderResource extends Resource
+class TeamResource extends Resource
 {
-    protected static ?string $model = Slider::class;
+    protected static ?string $model = Team::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function getNavigationGroup(): ?string
     {
@@ -33,20 +32,21 @@ class SliderResource extends Resource
     }
     public static function getModelLabel(): string
     {
-        return __('Slider');
+        return __('Team');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Sliders');
+        return __('Teams');
     }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Grid::make()->schema([
-                    Section::make(__('Slider Information'))
-                        ->description(__('This is the main information about the slider.'))
+                    Section::make(__('Team Information'))
+                        ->description(__('This is the main information about the team.'))
                         ->collapsible(true)
                         ->schema([
                             TextInput::make('name_ar')
@@ -65,37 +65,34 @@ class SliderResource extends Resource
                                 ->autofocus(),
 
 
-
                         ])->columns(2),
 
 
-                    Section::make(__('Description Information'))
-                        ->description(__('This is the description information about the slider.'))
+                    Section::make(__('Job Title Information'))
+                        ->description(__('This is the job title information about the team.'))
                         ->collapsible(true)
 
                         ->schema([
 
-                            Textarea::make('desc_ar')
-                                ->label(__('desc_ar'))
+                            TextInput::make('job_title_ar')
+                                ->label(__('job_title_ar'))
                                 ->minLength(3)
 
-                                ->columnSpan(3)
-                                ->rows(5)
+
                                 ->required(),
 
 
-                            Textarea::make('desc_en')
-                                ->label(__('desc_en'))
+                                TextInput::make('job_title_en')
+                                ->label(__('job_title_en'))
                                 ->minLength(3)
 
-                                ->columnSpan(3)
-                                ->rows(5)
+
                                 ->required(),
 
-                        ]),
+                        ])->columns(2),
 
                     Section::make(__('Images Information'))
-                        ->description(__('This is the images information about the slider.'))
+                        ->description(__('This is the images information about the team.'))
                         ->collapsible(true)
 
                         ->schema([
@@ -104,20 +101,16 @@ class SliderResource extends Resource
 
                             FileUpload::make('image')
                                 ->label(__('image'))
-                                ->disk('public')->directory('Slider')
+
+                                ->disk('public')->directory('team')
                                 ->columnSpanFull()
                                 ->preserveFilenames()
                                 ->reorderable()
-
-                                ->required(),
-
-                            FileUpload::make('background_image')
-                                ->label(__('background_image'))
-                                ->disk('public')->directory('Slider')
                                 ->columnSpanFull()
-                                ->preserveFilenames()
-                                ->reorderable()
+
                                 ->required(),
+
+
                         ]),
 
 
@@ -134,30 +127,23 @@ class SliderResource extends Resource
                 return $query->latest('created_at');
             })
             ->columns([
-                ImageColumn::make('background_image')
-                    ->label(__('background_image'))
+                ImageColumn::make('image')
+                    ->label(__('image'))
+                    ->stacked()
                     ->circular(),
                 TextColumn::make('name_' . app()->getLocale())
                     ->searchable()
                     ->label(__('name_' . app()->getLocale())),
-
-                TextColumn::make('desc_' . app()->getLocale())
-                    ->searchable()
-                    ->label(__('desc_' . app()->getLocale()))
+                TextColumn::make('job_title_' . app()->getLocale())
                     ->wrap()
-                    ->words(50),
-                ImageColumn::make('image')
-                    ->label(__('image'))
-                    ->circular()
-                    ->stacked(),
+                    ->markdown()
+                    ->words(50)
+                    ->searchable()
+                    ->label(__('job_title_' . app()->getLocale())),
+
 
                 TextColumn::make('created_at')
                     ->label(__('Created At'))
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->label(__('Updated At'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -194,11 +180,12 @@ class SliderResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSliders::route('/'),
-            'create' => Pages\CreateSlider::route('/create'),
-            'edit' => Pages\EditSlider::route('/{record}/edit'),
+            'index' => Pages\ListTeams::route('/'),
+            'create' => Pages\CreateTeam::route('/create'),
+            'edit' => Pages\EditTeam::route('/{record}/edit'),
         ];
     }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

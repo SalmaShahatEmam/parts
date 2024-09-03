@@ -34,10 +34,10 @@
                             <h4>{{ __('معلومات') }}</h4>
                             <div class="footer-links">
                                 <ul>
-                                    <li><a href="/aboutus.html">من نحن</a></li>
-                                    <li><a href="/aboutus.html#team"> فريق العمل </a></li>
-                                    <li><a href="/projects.html">المشاريع</a></li>
-                                    <li><a href="/contactus.html">اتصل بنا</a></li>
+                                    <li><a href="{{ route('site.about') }}">{{ __('من نحن') }}</a></li>
+                                    <li><a href="{{ route('site.about') }}#team">{{ __('فريق العمل') }}</a></li>
+                                    <li><a href="{{ route('site.projects') }}">{{ __('المشاريع') }}</a></li>
+                                    <li><a href="{{ route('site.contact') }}">{{ __('اتصل بنا') }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -45,13 +45,13 @@
                             <h4>{{ __('روابط مهمة') }}</h4>
                             <div class="footer-links">
                                 <ul>
-                                    <li><a href="/services.html">الخدمات</a></li>
-                                    <li><a href="/blogs.html">المدونة</a></li>
+                                    <li><a href="{{ route('site.services') }}">{{ __('الخدمات') }}</a></li>
+                                    <li><a href="{{ route('site.blogs') }}">{{ __('المدونة') }}</a></li>
                                     <li>
-                                        <a href="/regulationspolicies.html">اللوائح والسياسات</a>
+                                        <a href="{{ route('site.regulations') }}">{{ __('اللوائح والسياسات') }}</a>
                                     </li>
-                                    <li><a href="/contracts.html">منصة العقود</a></li>
-                                    <li><a href="/partners.html">شركاء النجاح</a></li>
+                                    <li><a href="{{ route('site.contracts.platform') }}">{{ __('منصة العقود') }}</a></li>
+                                    <li><a href="{{ route('site.partners') }}">{{ __('شركاء النجاح') }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="copy__write">
         <p>
 

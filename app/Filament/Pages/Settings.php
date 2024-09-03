@@ -60,13 +60,13 @@ class Settings extends SettingsPage
                                     ->minLength(3)
                                     ->maxLength(255)
                                     ->required(),
-                                    Textarea::make('decs_footer_ar')
+                                Textarea::make('decs_footer_ar')
                                     ->label(__('Description Footer (Arabic)'))
                                     ->autofocus()
                                     ->minLength(3)
                                     ->rows(5)
                                     ->required(),
-                                    Textarea::make('decs_footer_en')
+                                Textarea::make('decs_footer_en')
                                     ->label(__('Description Footer (English)'))
                                     ->autofocus()
                                     ->minLength(3)
@@ -80,7 +80,7 @@ class Settings extends SettingsPage
                                     ->preserveFilenames()
                                     ->reorderable()
                                     ->required(),
-                                    FileUpload::make('logo_footer')
+                                FileUpload::make('logo_footer')
                                     ->label(__('Logo Footer'))
                                     ->image()
                                     ->disk('public')
@@ -288,15 +288,19 @@ class Settings extends SettingsPage
                                         ->description(__('This is the main information about the about us.'))
                                         ->collapsible(true)
                                         ->schema([
-                                            RichEditor::make('about_desc_ar')
+                                            Textarea::make('about_desc_ar')
                                                 ->label(__('Description (Arabic)'))
                                                 ->autofocus()
                                                 ->minLength(3)
+                                                ->rows(6)
+
                                                 ->required(),
-                                            RichEditor::make('about_desc_en')
+                                            Textarea::make('about_desc_en')
                                                 ->label(__('Description (English)'))
                                                 ->autofocus()
                                                 ->minLength(3)
+                                                ->rows(6)
+
                                                 ->required(),
 
                                             FileUpload::make('about_image')
@@ -320,15 +324,29 @@ class Settings extends SettingsPage
 
                                         ->schema([
 
-
-                                            RichEditor::make('seo_desc_ar')
+                                            TextInput::make('seo_title_ar')
+                                                ->label(__('seo_title_ar'))
+                                                ->autofocus()
+                                                ->minLength(3)
+                                                ->maxLength(255)
+                                                ->required(),
+                                            TextInput::make('seo_title_en')
+                                                ->label(__('seo_title_en'))
+                                                ->autofocus()
+                                                ->minLength(3)
+                                                ->maxLength(255)
+                                                ->required(),
+                                            Textarea::make('seo_desc_ar')
                                                 ->label(__('Description (Arabic)'))
                                                 ->autofocus()
                                                 ->minLength(3)
+                                                ->rows(6)
                                                 ->required(),
-                                            RichEditor::make('seo_desc_en')
+                                            Textarea::make('seo_desc_en')
                                                 ->label(__('Description (English)'))
                                                 ->autofocus()
+                                                ->rows(6)
+
                                                 ->minLength(3)
                                                 ->required(),
                                             FileUpload::make('seo_image')
@@ -348,14 +366,18 @@ class Settings extends SettingsPage
 
                                         ->schema([
 
-                                            RichEditor::make('vision_ar')
+                                            Textarea::make('vision_ar')
                                                 ->label(__('Description (Arabic)'))
                                                 ->autofocus()
                                                 ->minLength(3)
+                                                ->rows(6)
+
                                                 ->required(),
-                                            RichEditor::make('vision_en')
+                                            Textarea::make('vision_en')
                                                 ->label(__('Description (English)'))
                                                 ->autofocus()
+                                                ->rows(6)
+
                                                 ->minLength(3)
                                                 ->required(),
 
@@ -366,14 +388,18 @@ class Settings extends SettingsPage
 
                                         ->schema([
 
-                                            RichEditor::make('message_ar')
+                                            Textarea::make('message_ar')
                                                 ->label(__('Description (Arabic)'))
                                                 ->autofocus()
                                                 ->minLength(4)
+                                                ->rows(6)
+
                                                 ->required(),
-                                            RichEditor::make('message_en')
+                                            Textarea::make('message_en')
                                                 ->label(__('Description (English)'))
                                                 ->autofocus()
+                                                ->rows(6)
+
                                                 ->minLength(4)
                                                 ->required(),
                                             FileUpload::make('message_image')

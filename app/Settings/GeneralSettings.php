@@ -46,6 +46,8 @@ class GeneralSettings extends Settings
     public string $value_desc_ar;
     public string $value_desc_en;
     public string $value_image;
+    public string $seo_title_en;
+    public string $seo_title_ar;
 
     public static function group(): string
     {

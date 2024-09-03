@@ -17,7 +17,7 @@
                                     <h4>
                                         {{ $slider->desc }}
                                     </h4>
-                                    <a href="/services.html">{{ __('اطلب الخدمة') }}</a>
+                                    <a href="{{ route('site.services') }}">{{ __('اطلب الخدمة') }}</a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -38,12 +38,9 @@
                                 <div class="landing-text">
                                     <h2>{{ __('افضل خدمات تقنية معلومات في المملكة') }}</h2>
                                     <h4>
-                                        {{ __('نحن نوفر افضل انظمة حماية من الحرائق والسرقة وافضل انظمة
-                                                                                                                                                                                                                                                                                حضور وانصراف لكي نساعدك ان تحيا حياة افضل واكثر راحة ونوفر
-                                                                                                                                                                                                                                                                                لك الامن والامان ونساعدك علي استثمار المزيد من وقتك في
-                                                                                                                                                                                                                                                                                امور اكثر اهمية') }}
+                                        {{ __('نحن نوفر افضل انظمة حماية من الحرائق والسرقة وافضل انظمة حضور وانصراف لكي نساعدك ان تحيا حياة افضل واكثر راحة ونوفرلك الامن والامان ونساعدك علي استثمار المزيد من وقتك في امور اكثر اهمية') }}
                                     </h4>
-                                    <a href="/services.html">{{ __('اطلب الخدمة') }}</a>
+                                    <a href="{{ route('site.services') }}">{{ __('اطلب الخدمة') }}</a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -69,7 +66,7 @@
         <div class="main-container">
             <div class="about__company__content">
                 <div class="about__company__text">
-                    <a href="/aboutus.html" class="about__company__text__header">
+                    <a href="{{ route('site.about') }}" class="about__company__text__header">
                         <div class="img">
                             <img src="{{ asset('site/images/about-us-img.png') }}" alt="logo" />
 
@@ -100,7 +97,7 @@
     <section class="services">
         <div class="main-container">
             <div class="services_content">
-                <a href="/services.html" class="about__company__text__header">
+                <a href="{{ route('site.services') }}" class="about__company__text__header">
                     <div class="img">
                         <img src="{{ asset('site/images/about-us-img.png') }}" alt="logo" />
                     </div>
@@ -131,12 +128,12 @@
                         @endforelse
 
                     </div>
-                    <a href="sadsadasdsa" class="about__company__btn caroiuo">
+                    <a href="{{ route('site.services') }}" class="about__company__btn caroiuo">
                         <div class="icons">
                             <i class="fa-solid fa-chevron-left"></i>
                             <i class="fa-solid fa-chevron-left"></i>
                         </div>
-                        <div class="text"> معرفة المزيد </div>
+                        <div class="text">{{ __('معرفة المزيد') }}</div>
                     </a>
                 </div>
             </div>
@@ -147,7 +144,7 @@
     <section class="projects">
         <div class="main-container">
             <div class="projects__content">
-                <a href="/projects.html" class="about__company__text__header">
+                <a href="{{ route('site.projects') }}" class="about__company__text__header">
                     <div class="img">
                         <img src="{{ asset('site/images/about-us-img.png') }}" alt="logo" />
                     </div>
@@ -187,7 +184,7 @@
     <section class="partners">
         <div class="main-container">
             <div class="partners__content">
-                <a href="/partners.html" class="about__company__text__header">
+                <a href="{{ route('site.partners') }}" class="about__company__text__header">
                     <div class="img">
                         <img src="{{ asset('site/images/about-us-img.png') }}" alt="logo" />
                     </div>
@@ -218,7 +215,7 @@
     <!-- Blog Section -->
     <section class="blogs">
         <div class="main-container">
-            <a href="/blogs.html" class="about__company__text__header">
+            <a href="{{ route('site.blogs') }}" class="about__company__text__header">
                 <div class="img">
                     <img src="{{ asset('site/images/about-us-img.png') }}" alt="logo" />
                 </div>
@@ -263,7 +260,7 @@
     <!-- contact us section -->
     <section class="contact-us">
         <div class="main-container">
-            <a href="/contactus.html" class="about__company__text__header">
+            <a href="{{ route('site.contact') }}" class="about__company__text__header">
                 <div class="img">
                     <img src="{{ asset('site/images/about-us-img.png') }}" alt="logo" />
                 </div>

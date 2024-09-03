@@ -72,7 +72,7 @@ class ServiceOrderResource extends Resource
                     ->required()
                     ->minLength(3),
 
-                TextInput::make('service_name')
+                TextInput::make('service_name_' . app()->getLocale())
                     ->label(__('service_name'))
                     ->required()
                     ->minLength(10),
@@ -122,8 +122,8 @@ class ServiceOrderResource extends Resource
                     ->sortable(),
 
 
-                Tables\Columns\TextColumn::make('service_name')
-                    ->label(__('service_name'))
+                Tables\Columns\TextColumn::make('service_name_' . app()->getLocale())
+                    ->label(__('service_name_'.app()->getLocale()))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title_message')

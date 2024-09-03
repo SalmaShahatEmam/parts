@@ -22,7 +22,8 @@ return new class extends Migration
             // $table->string('whatsapp');
             // $table->enum('best_contact_method', ['email', 'phone', 'whatsapp']);
             $table->text('message');
-            $table->string('service_name')->nullable();
+            $table->string('service_name_ar')->nullable();
+            $table->string('service_name_en')->nullable();
             $table->softDeletes();
 
             $table->timestamps();
