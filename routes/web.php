@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\BlogController;
+use App\Http\Controllers\Site\BrancheController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ProjectController;
 use App\Http\Controllers\Site\ServicesController;
 use App\Http\Controllers\Site\StaticPageController;
+use App\Http\Controllers\Site\ContractsPlatformController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,7 @@ Route::namespace('Site')->name('site.')->middleware('lang')->group(function () {
     Route::get('/', [HomeController::class,'index'])->name('home');
     Route::post('service-request', [HomeController::class,'service_request'])->name('service.request');
     Route::post('contact-request', [HomeController::class,'contact_request'])->name('contact.request');
+    Route::get('branches', [BrancheController::class,'index'])->name('branches');
 
     //-------------------------------- End Home Page Routes ------------------------------//
 
@@ -71,7 +74,7 @@ Route::namespace('Site')->name('site.')->middleware('lang')->group(function () {
 
 
     //------------------------------------ Contracts Platform Page Routes ------------------------------//
-    Route::get('contracts-platform', [StaticPageController::class,'contracts_platform'])->name('contracts.platform');
+    Route::get('contracts-platform', [ContractsPlatformController::class,'index'])->name('contracts.platform');
     //------------------------------------ End Contracts Platform Page Routes ------------------------------//
 
 

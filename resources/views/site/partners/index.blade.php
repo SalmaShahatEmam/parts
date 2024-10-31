@@ -13,7 +13,7 @@
             <div class="landing custom__landing">
                 <div class="main-container">
                     <div class="row">
-                        <div class="col-lg-7 col-md-6 col-sm-12">
+                        <div class="col-lg-7 col-md-5 col-5">
                             <div class="landing__text">
                                 <div class="landing__header">{{ __('شركاء النجاح') }}</div>
                                 <div class="landing__links">
@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-7 mask-img-intro col-7">
                             <div class="landing-img mask1">
                                 <img src="{{ asset('site/images/image.png') }}" alt="" />
                             </div>

@@ -9,6 +9,7 @@ use App\Mail\AlphaMail;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\ServiceOrder;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Mail;
@@ -19,6 +20,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ServiceOrderResource\Pages;
 use App\Filament\Resources\ServiceOrderResource\RelationManagers;
@@ -123,7 +126,7 @@ class ServiceOrderResource extends Resource
 
 
                 Tables\Columns\TextColumn::make('service_name_' . app()->getLocale())
-                    ->label(__('service_name_'.app()->getLocale()))
+                    ->label(__('service_name'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title_message')
@@ -169,34 +172,38 @@ class ServiceOrderResource extends Resource
                     ])
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Action::make('Send Reply')
-                    ->label(__('Send Reply'))
-                    ->form([
-                        Textarea::make('reply')
-                            ->label(__('Reply'))
-                            ->minLength(3)
+                Tables\Actions\ActionGroup::make([
 
-                            ->columnSpan(3)
-                            ->rows(5)
-                            ->required(),
-                    ])
-                    ->action(function (ServiceOrder $ServiceOrder, array $data) {
+                    Tables\Actions\ViewAction::make(),
+                    Action::make('Send Reply')
+                        ->label(__('Send Reply'))
+                        ->form([
+                            Textarea::make('reply')
+                                ->label(__('Reply'))
+                                ->minLength(3)
 
-                        Mail::to($ServiceOrder->email)->send(new AlphaMail($data));
+                                ->columnSpan(3)
+                                ->rows(5)
+                                ->required(),
+                        ])
+                        ->action(function (ServiceOrder $ServiceOrder, array $data) {
 
-
-                        $ServiceOrder->is_replay = 1;
-                        $ServiceOrder->save();
+                            Mail::to($ServiceOrder->email)->send(new AlphaMail($data));
 
 
-                        Notification::make()
-                            ->title(__('Reply Sent Successfully'))
-                            ->success()
-                            ->icon('heroicon-o-inbox')
-                            ->iconColor('success')
-                            ->send();
-                    })->icon('heroicon-o-chat-bubble-left-right')
+                            $ServiceOrder->is_replay = 1;
+                            $ServiceOrder->save();
+
+
+                            Notification::make()
+                                ->title(__('Reply Sent Successfully'))
+                                ->success()
+                                ->icon('heroicon-o-inbox')
+                                ->iconColor('success')
+                                ->send();
+                        })->icon('heroicon-o-chat-bubble-left-right')
+                ]),
+
 
             ])
             ->bulkActions([
@@ -221,5 +228,58 @@ class ServiceOrderResource extends Resource
 
 
         ];
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+
+                Section::make(fn(ServiceOrder $record) => __('عرض رسالة من') . ' ' . $record->name)
+                    ->description(fn(ServiceOrder $record) => __('رسالة من') . ' ' . $record->name . ' ' . __('بتاريخ') . ' ' . $record->created_at->format('Y-m-d'))
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label(__('Name')),
+
+                        TextEntry::make('email')
+                            ->label(__('Email'))
+                            ->url(fn(ServiceOrder $record) => 'mailto:' . $record->email, true) // Redirect to email
+                        ,
+
+                        TextEntry::make('phone')
+                            ->label(__('Phone'))
+                            ->url(fn(ServiceOrder $record) => 'tel:' . $record->phone, true) // Redirect to phone
+                        ,
+                        TextEntry::make('code')
+                            ->label(__('code'))
+
+                           ,
+
+
+                        TextEntry::make('service_name_' . app()->getLocale())
+                            ->label(__('service_name'))
+
+                            ,
+                        TextEntry::make('title_message')
+                            ->label(__('title_message'))
+
+                            ,
+
+
+                        TextEntry::make('message')
+                            ->label(__('message')),
+
+                        TextEntry::make('is_replay')
+                            ->label(__('isReply'))
+                            ->formatStateUsing(fn(ServiceOrder $record) => $record->is_replay ? __('is replied') : __('not replied'))
+                            ->color(fn(ServiceOrder $record) => $record->is_replay ? 'success' : 'danger')
+                            ->badge(),
+
+                        TextEntry::make('created_at')
+                            ->label(__('Created At'))
+                            ->dateTime()
+                    ])->columns(2),
+
+            ]);
     }
 }

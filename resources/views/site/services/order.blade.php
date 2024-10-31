@@ -12,17 +12,17 @@
             <div class="landing custom__landing">
                 <div class="main-container">
                     <div class="row">
-                        <div class="col-lg-7 col-md-6 col-sm-12">
+                        <div class="col-lg-7 col-md-5 col-5">
                             <div class="landing__text">
                                 <div class="landing__header"> {{ __('طلب الخدمة') }} </div>
                                 <div class="landing__links">
-                                    <a href="/"> {{ __('الرئيسية') }} </a> /
+                                    {{-- {{ $service->name }}/ --}}
                                     <a href="{{ route('site.services') }}"> {{ __('خدماتنا') }} </a> /
-                                    {{ $service->name }}
+                                    <a href="/"> {{ __('الرئيسية') }} </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-7 mask-img-intro col-7">
                             <div class="landing-img mask1">
                                 <img src="{{ asset('site/images/image.png') }}" alt="" />
                             </div>
@@ -74,9 +74,14 @@
                 <div class="input-container">
                     <div class="input bg-chiper"
                         style="background-image: url('{{ asset('site/images/bg-chiper.png') }}');">
+                        <input type="text" name="code_virfy" readonly value="3207" id="code_virfy"
+                            oncopy="return false;">
+                    </div>
+                    {{-- <div class="input bg-chiper"
+                        style="background-image: url('{{ asset('site/images/bg-chiper.png') }}');">
 
                         <input type="text" name="code_virfy" disabled value="3207" id="code_virfy">
-                    </div>
+                    </div> --}}
                     <div class="input">
                         <input type="text" name="code" placeholder="{{ __('كود التحقق') }}" id="code">
                         <div class="img"><img src="{{ asset('site/images/verify.png') }}" alt=""></div>
@@ -96,6 +101,13 @@
 
 @push('js')
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var codeInput = document.getElementById('code_virfy');
+            codeInput.addEventListener('copy', function(e) {
+                e.preventDefault();
+
+            });
+        });
         $(document).ready(function() {
             var code = Math.floor(1000 + Math.random() * 9000);
             $('#code_virfy').val(code);

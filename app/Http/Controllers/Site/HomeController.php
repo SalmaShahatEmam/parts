@@ -12,6 +12,7 @@ use App\Models\StudyDestination;
 use App\Models\TouristDestination;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Site\ContactUsRequest;
 use App\Models\Blog;
 use App\Models\Partner;
 use App\Models\Project;
@@ -25,57 +26,52 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $sliders = Slider::all();
+      /*   $sliders = Slider::all();
         $services = Service::take(6)->get();
         $projects = Project::all();
         $partners = Partner::all();
         $blogs = Blog::take(4)->get();
-
-        return view('site.home', compact('sliders', 'services','projects', 'partners', 'blogs'));
+ */
+        return view('site.home'/* , compact('sliders', 'services','projects', 'partners', 'blogs') */);
     }
 
-    public function service_request(Request $request)
+    // public function service_request(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'email' => 'required|email',
+    //         'whatsapp' => 'required',
+    //         'phone' => 'required',
+    //         'service_name' => 'required',
+    //         'message' => 'required',
+    //     ]);
+    //     $order = ServiceOrder::create($request->all());
+    //     Notification::make()
+    //         ->title('يريد العميل ' . $request->name . ' الحصول على خدمة ' . $request->service_name)
+    //         ->actions([
+    //             Action::make('view')
+    //                 ->label('عرض الطلب')
+    //                 ->button()
+    //                 ->url(function ()  use ($order) {
+    //                     return route('filament.admin.resources.service-orders.view', $order->id);
+    //                 })
+    //                 ->markAsRead()
+    //         ])
+    //         // ->broadcast(User::role('admin')->first());
+    //         ->sendToDatabase(User::role('admin')->first());
+
+    //     event(new DatabaseNotificationsSent(User::role('admin')->first()));
+
+
+    //     return response()->json(['success' => __('تم ارسال الرسالة بنجاح وسوف يتم الرد عليك في اقرب وقت')]);
+
+    //     return redirect()->back()->with('success', 'Your request has been sent successfully');
+    // }
+
+    public function contact_request(ContactUsRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'whatsapp' => 'required',
-            'phone' => 'required',
-            'service_name' => 'required',
-            'message' => 'required',
-        ]);
-        $order = ServiceOrder::create($request->all());
-        Notification::make()
-            ->title('يريد العميل ' . $request->name . ' الحصول على خدمة ' . $request->service_name)
-            ->actions([
-                Action::make('view')
-                    ->label('عرض الطلب')
-                    ->button()
-                    ->url(function ()  use ($order) {
-                        return route('filament.admin.resources.service-orders.view', $order->id);
-                    })
-                    ->markAsRead()
-            ])
-            // ->broadcast(User::role('admin')->first());
-            ->sendToDatabase(User::role('admin')->first());
 
-        event(new DatabaseNotificationsSent(User::role('admin')->first()));
-
-
-        return response()->json(['success' => __('تم ارسال الرسالة بنجاح وسوف يتم الرد عليك في اقرب وقت')]);
-
-        return redirect()->back()->with('success', 'Your request has been sent successfully');
-    }
-
-    public function contact_request(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'message' => 'required',
-        ]);
-        $contact = Contact::create($request->all());
+        $contact = Contact::create($request->validated());
 
 
         Notification::make()

@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
         };
 
         view()->composer('site.layouts.navbar', $composeViewWithSettings);
-        view()->composer('site.contactUs.index', $composeViewWithSettings);
+        view()->composer('site.contact', $composeViewWithSettings);
 
         // Views that need both the setting and services
         view()->composer('site.layouts.footer', $composeViewWithSettings);

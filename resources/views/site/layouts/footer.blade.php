@@ -1,118 +1,84 @@
-<!-- start footer -->
-<footer>
+<footer style="background-image: url('./images/footer-bg.png')">
     <div class="main-container">
-        <div class="top-footer">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 col-sm-12 d-flex flex-column gap-3">
-                    <a href="/" class="footer-logo">
-                        <img src="{{ asset('storage/' . $setting->logo_footer) }} " alt="">
-                    </a>
-                    <p>
-                        {{ $setting->{'decs_footer_' . app()->getLocale()} }}
-                    </p>
-                    <ul class="social">
-                        <li>
-                            <a target="__blank" href="{{ $setting->instagram }}"><i class="fa-brands fa-instagram"></i></a>
-                        </li>
-                        <li>
-                            <a target="__blank" href="{{ $setting->linkedin }}"><i class="fa-brands fa-linkedin-in"></i></a>
-                        </li>
-                        <li>
-                            <a  target="__blank" href="{{ $setting->facebook }}"><i class="fa-brands fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a target="__blank" href=" https://wa.me/{{ $setting->whatsapp  }}"><i class="fa-brands fa-whatsapp"></i></a>
-                        </li>
-                        <li>
-                            <a target="__blank" href="{{ $setting->twitter }}"><i class="fa-brands fa-x-twitter"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="row">
-                        <div class="col-6">
-                            <h4>{{ __('معلومات') }}</h4>
-                            <div class="footer-links">
-                                <ul>
-                                    <li><a href="{{ route('site.about') }}">{{ __('من نحن') }}</a></li>
-                                    <li><a href="{{ route('site.about') }}#team">{{ __('فريق العمل') }}</a></li>
-                                    <li><a href="{{ route('site.projects') }}">{{ __('المشاريع') }}</a></li>
-                                    <li><a href="{{ route('site.contact') }}">{{ __('اتصل بنا') }}</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <h4>{{ __('روابط مهمة') }}</h4>
-                            <div class="footer-links">
-                                <ul>
-                                    <li><a href="{{ route('site.services') }}">{{ __('الخدمات') }}</a></li>
-                                    <li><a href="{{ route('site.blogs') }}">{{ __('المدونة') }}</a></li>
-                                    <li>
-                                        <a href="{{ route('site.regulations') }}">{{ __('اللوائح والسياسات') }}</a>
-                                    </li>
-                                    <li><a href="{{ route('site.contracts.platform') }}">{{ __('منصة العقود') }}</a></li>
-                                    <li><a href="{{ route('site.partners') }}">{{ __('شركاء النجاح') }}</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-12 col-lg-5">
+          <div class="logo-footer">
+            <a href="/"><img src="./images/logo.png" alt="" /></a>
+          </div>
+          <div class="desc">
+            قطع وأكثر للتجارة نعمل في مجال استيراد وبيع قطع غيار السيارات
+            بالجملة والتجزئة من خلال فروعنا تعتبر قطع الغيار من العناصر
+            الأساسية التي تسهم في الحفاظ على أداء السيارة وضمان سلامة
+            الركاب.
+          </div>
+          <div class="footer-links">
+            <a href="https://wa.me" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="instagram.com" target="_blank"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="facebook.com" target="_blank"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+          </div>
         </div>
-    </div>
+        <div class="col-12 col-lg-3">
+          <div class="footer-headeing">روابط سريعة</div>
+          <ul>
+            <li><a href="/"> الرئيسية </a></li>
+            <li><a href="/aboutus.html"> عن الشركة </a></li>
+            <li><a href="/services.html"> خدماتنا </a></li>
+            <li><a href="/contactus.html"> تواصل معنا </a></li>
+            <li><a href="/branches.html"> فروعنا </a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="footer-headeing">النشرة الاخبارية</div>
+          <div class="footer-news">
+            اشترك فى النشرة الاخبارية لدينا ليصلك كل جديد عن قطع غيار
+            السيارات
+          </div>
+          <div class="footer-frm">
+            <form action="">
+              <input type="text" placeholder="ادخل بريدك الالكتروني" />
+              <button type="submit">ارسال</button>
+            </form>
+          </div>
+        </div>
+      </div>
 
-    <div class="copy__write">
-        <p>
+      <div class="copy-write">
+        كل الحقوق محفوظة &copy;2024 لشركة قطع وأكثر للتجارة
+      </div>
 
-            {{ __('كل الحقوق محفوظة') }} {{ $setting->{'site_name_' . app()->getLocale()} }} &copy;
-            {{ date('Y') }}
-        </p>
-
-        <a href="https://jaadara.com/" target="_blank">
-            {{ __('صنع بكل حب') }} <span> ❤ </span> {{ __('في معامل جدارة') }}
+      <div class="footer-contact">
+        <a class="icon" href="https://wa.me/" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i>
         </a>
+        <a class="icon" href="tel:+1234567890" target="_blank">
+          <i class="fa-solid fa-phone-volume"></i>
+        </a>
+      </div>
     </div>
-</footer>
-
-<!-- start menu responsive =========== -->
-<div class="bg_menu"></div>
-<div class="menu_responsive" id="menu-div">
-    <div class="element_menu_responsive">
-        <!-- <a href="/" class="logo-container">
-                  <img src="images/logo.png">
-              </a> -->
-        <div class="element">
-            <ul>
-                <li><a href="/">الرئيسية</a></li>
-                <li><a href="/aboutus.html">من نحن </a></li>
-                <li><a href="/services.html">خدماتنا </a></li>
-                <li><a href="/projects.html">المشاريع</a></li>
-                <li><a href="/blogs.html">المدونة</a></li>
-                <li><a href="/partners.html">شركاء النجاح</a></li>
-                <li><a href="/regulationspolicies.html">اللوائح والسياسات</a></li>
-                <li><a href="/contracts.html">منصة العقود</a></li>
-                <li><a href="/contactus.html">تواصل معنا</a></li>
-            </ul>
-        </div>
-        <div class="language">
-            <div class="dropdown">
-                <button class="dropbtn">
-                    <i class="fa-solid fa-angle-down"></i> AR
-                </button>
-                <div class="dropdown-content">
-                    <a href="#">EN</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="remove-mune">
-        <span></span>
-    </div>
+  </footer>
 </div>
-
+<!-- responsive menu -->
+<div class="overlay"></div>
+<div class="responsive-menu">
+  <div class="close-menu">X</div>
+  <div class="res-logo">
+    <a href="/"> <img src="./images/logo.png" alt="logo" /> </a>
+  </div>
+  <ul class="mka-flex-center">
+    <li><a href="/"> الرئيسية </a></li>
+    <li><a href="/aboutus.html"> من نحن </a></li>
+    <li><a href="/services.html"> خدماتنا </a></li>
+    <li><a href="/branches.html"> فروعنا </a></li>
+    <li><a href="/contactus.html"> تواصل معنا </a></li>
+  </ul>
+</div>
 
 @include('site.layouts.script')
 </body>
-
 </html>

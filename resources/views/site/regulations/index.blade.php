@@ -1,5 +1,5 @@
 @extends('site.layouts.app')
-@section('title', __('من نحن'))
+@section('title', __('اللوائح والسياسات'))
 
 @include('site.layouts.seo')
 
@@ -13,15 +13,15 @@
             <div class="landing custom__landing">
                 <div class="main-container">
                     <div class="row">
-                        <div class="col-lg-7 col-md-6 col-sm-12">
+                        <div class="col-lg-7 col-md-5 col-5">
                             <div class="landing__text">
                                 <div class="landing__header">{{ __('اللوائح والسياسات') }}</div>
                                 <div class="landing__links">
-                                    {{ __('اللوائح والسياسات') }}<a href="/"> / {{ __('الرئيسية') }} </a>
+                                    {{ __('اللوائح') }}<a href="/"> / {{ __('الرئيسية') }} </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-7 mask-img-intro col-7">
                             <div class="landing-img mask1">
                                 <img src="{{ asset('site/images/image.png') }}" alt="" />
                             </div>
@@ -43,12 +43,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                data-bs-target="#flush-collapse-{{ $category->id }}" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
                                 {{ $category->name }} /{{ __('عددها') }} {{ $category->regulations_count }}
                             </button>
                         </h2>
                         @foreach ($category->regulations as $regulation)
-                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            <div id="flush-collapse-{{ $regulation->category_id }}" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
                                     <div class="pdf__view">
@@ -57,7 +58,8 @@
                                                     alt=""> </div>
                                             <p> {{ $regulation->name }}</p>
                                         </div>
-                                        <div data-href="{{ $regulation->pdf_path }}" class="icon  pdf_download"> <i
+                                        <div  data-href="{{ $regulation->pdf_path }}"
+                                            data-name="{{ $regulation->name }}" class="icon  pdf_download"> <i
                                                 class="fa-solid fa-download"></i> </div>
                                     </div>
                                 </div>
@@ -80,41 +82,35 @@
 @push('js')
     <script>
         $(document).ready(function() {
-
-
             $('.pdf_download').on('click', function(e) {
                 e.preventDefault();
 
-                var href_pdf = $(this).attr('href');
+                var href_pdf = $(this).data('href');
+                var name = $(this).data('name');
 
-                var a = document.createElement('a');
+
+
+                $.ajax({
+                    url: href_pdf,
+                    method: 'GET',
+                    xhrFields: {
+                        responseType: 'blob'
+                    },
+                    success: function(data) {
+
+                        var a = document.createElement('a');
                         var url = window.URL.createObjectURL(data);
                         a.href = url;
-                        a.download =
-                            '{{ isset($regulation->name) ? $regulation->name : 'default' }}'; // or any other extension                        document.body.append(a);
+                        a.download = name + '.pdf';
+                        document.body.appendChild(a);
                         a.click();
                         a.remove();
                         window.URL.revokeObjectURL(url);
-
-                // $.ajax({
-                //     url: href,
-                //     method: 'GET',
-                //     xhrFields: {
-                //         responseType: 'blob'
-                //     },
-                //     success: function(data) {
-                //         console.log(data);
-
-                //         var a = document.createElement('a');
-                //         var url = window.URL.createObjectURL(data);
-                //         a.href = url;
-                //         a.download =
-                //             '{{ isset($regulation->name) ? $regulation->name : 'default' }}'; // or any other extension                        document.body.append(a);
-                //         a.click();
-                //         a.remove();
-                //         window.URL.revokeObjectURL(url);
-                //     }
-                // });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error downloading the PDF:', error);
+                    }
+                });
             });
         });
     </script>

@@ -9,20 +9,21 @@
 @section('header-hero')
     <div class="owl-carousel">
         <div class="item">
+
             <div class="landing custom__landing">
                 <div class="main-container">
                     <div class="row">
-                        <div class="col-lg-7 col-md-6 col-sm-12">
+                        <div class="col-lg-7 col-md-5 col-5">
                             <div class="landing__text">
                                 <div class="landing__header"> {{ __('تفاصيل الخدمة') }} </div>
                                 <div class="landing__links">
-                                    <a href="/"> {{ __('الرئيسية') }} </a> /
+                                    {{-- {{ $service->name }} / --}}
                                     <a href="{{ route('site.services') }}"> {{ __('خدماتنا') }} </a> /
-                                    {{ $service->name }}
+                                    <a href="/"> {{ __('الرئيسية') }} </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-7 mask-img-intro col-7">
                             <div class="landing-img mask1">
                                 <img src="{{ asset('site/images/image.png') }}" alt="" />
                             </div>
@@ -72,7 +73,7 @@
                                     </div>
                                     <h3>{{ $otherService->name }}</h3>
 
-                                    <h6></h6>{{ Str::limit($otherService->desc, 100) }}</h6>
+                                    <h6>{{ Str::limit($otherService->desc, 100) }}</h6>
                                 </a>
                             </div>
                         @empty
@@ -95,6 +96,9 @@
                 loop: true,
                 nav: true,
                 margin: 10,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
                 navText: [
                     '<i class="fa-solid fa-arrow-left-long"></i>', // Left arrow
                     '<i class="fa-solid fa-arrow-right-long"></i>' // Right arrow

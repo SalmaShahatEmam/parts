@@ -55,6 +55,7 @@ class ServiceResource extends Resource
                                 ->label(__('name_ar'))
                                 ->minLength(3)
                                 ->maxLength(255)
+                                ->unique(Service::class, 'name_ar', ignoreRecord: true)
 
                                 ->required(),
 
@@ -63,6 +64,7 @@ class ServiceResource extends Resource
                                 ->label(__('name_en'))
                                 ->minLength(3)
                                 ->maxLength(255)
+                                ->unique(Service::class, 'name_en', ignoreRecord: true)
 
                                 ->autofocus()
                                 ->lazy()

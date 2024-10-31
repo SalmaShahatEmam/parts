@@ -38,16 +38,12 @@ class StaticPageController extends Controller
 
     public function regulations()
     {
-        $regulationsCategory = RegulationCategory::whereHas('regulations')->withCount('regulations')->latest()->get();
+        $regulationsCategory = RegulationCategory::whereHas('regulations')->with('regulations')->withCount('regulations')->latest()->get();
 
         return view('site.regulations.index', compact('regulationsCategory'));
     }
 
-    public function contracts_platform()
-    {
-        $contracts = Institute::all();
-        return view('site.contracts_platform', compact('contracts'));
-    }
+   
 
 
     public function contact()

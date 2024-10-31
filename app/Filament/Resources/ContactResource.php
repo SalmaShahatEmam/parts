@@ -8,6 +8,7 @@ use App\Mail\AlphaMail;
 use App\Models\Contact;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Mail;
@@ -18,6 +19,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
 use App\Filament\Resources\ContactResource\Pages;
 
 class ContactResource extends Resource
@@ -49,27 +52,27 @@ class ContactResource extends Resource
                     ->minLength(3)
                     ->autofocus(),
 
-                    TextInput::make('email')
+                TextInput::make('email')
                     ->label(__('email'))
                     ->required()
                     ->email(),
 
-                    // TextInput::make('phone')
-                    // ->label(__('phone'))
-                    // ->required()
-                    // ->minLength(10),
+                // TextInput::make('phone')
+                // ->label(__('phone'))
+                // ->required()
+                // ->minLength(10),
 
                 Textarea::make('message')
                     ->label(__('message'))
                     ->required()
                     ->columnSpanFull()
                     ->minLength(10),
-                    Toggle::make('isReply')
+                Toggle::make('isReply')
                     ->label(__('isReply'))
 
 
             ])
-            ->columns(3);
+            ->columns(1);
     }
 
 
@@ -77,9 +80,9 @@ class ContactResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-        ->modifyQueryUsing(function (Builder $query) {
-            return $query->latest('created_at');
-        })
+            ->modifyQueryUsing(function (Builder $query) {
+                return $query->latest('created_at');
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('name'))
@@ -90,7 +93,7 @@ class ContactResource extends Resource
                     ->label(__('email'))
                     ->searchable()
                     ->sortable()
-                    ->url(fn (Contact $record) => 'mailto:' . $record->email, true), // Redirect to email
+                    ->url(fn(Contact $record) => 'mailto:' . $record->email, true), // Redirect to email
 
 
                 // Tables\Columns\TextColumn::make('phone')
@@ -141,35 +144,39 @@ class ContactResource extends Resource
                     ])
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Action::make('Send Reply')
-                    ->label(__('Send Reply'))
-                    ->form([
-                        Textarea::make('reply')
-                            ->label(__('Reply'))
-                            ->minLength(3)
+                Tables\Actions\ActionGroup::make([
 
-                            ->columnSpan(3)
-                            ->rows(5)
-                            ->required(),
-                    ])
-                    ->action(function (Contact $contact, array $data) {
+                    Tables\Actions\ViewAction::make(),
+                    Action::make('Send Reply')
+                        ->label(__('Send Reply'))
+                        ->form([
+                            Textarea::make('reply')
+                                ->label(__('Reply'))
+                                ->minLength(3)
 
-
-                       //Mail::to($contact->email)->send(new AlphaMail($data));
-
-                        $contact->isReply = 1;
-                        $contact->save();
+                                ->columnSpan(3)
+                                ->rows(5)
+                                ->required(),
+                        ])
+                        ->action(function (Contact $contact, array $data) {
 
 
-                        Notification::make()
-                            ->title(__('Reply Sent Successfully'))
-                            ->success()
-                            ->icon('heroicon-o-inbox')
-                            ->iconColor('success')
+                            //Mail::to($contact->email)->send(new AlphaMail($data));
 
-                            ->send();
-                    })->icon('heroicon-o-chat-bubble-left-right')
+                            $contact->isReply = 1;
+                            $contact->save();
+
+
+                            Notification::make()
+                                ->title(__('Reply Sent Successfully'))
+                                ->success()
+                                ->icon('heroicon-o-inbox')
+                                ->iconColor('success')
+
+                                ->send();
+                        })->icon('heroicon-o-chat-bubble-left-right')
+                ]),
+
 
 
             ])
@@ -192,7 +199,42 @@ class ContactResource extends Resource
         return [
             'index' => Pages\ListContacts::route('/'),
             'view' => Pages\ViewUser::route('/{record}'),
+            // 'view' => Pages\ViewCustomerContact::route('/{record}'),
 
         ];
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+
+                Section::make(fn(Contact $record) => __('عرض رسالة من') . ' ' . $record->name)
+                    ->description(fn(Contact $record) => __('رسالة من') . ' ' . $record->name . ' ' . __('بتاريخ') . ' ' . $record->created_at->format('Y-m-d'))
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label(__('Name')),
+
+                        TextEntry::make('email')
+                            ->label(__('Email'))
+                            ->url(fn(ServiceOrder $record) => 'mailto:' . $record->email, true) // Redirect to email
+
+                        ,
+
+                        TextEntry::make('message')
+                            ->label(__('message')),
+
+                        TextEntry::make('isReply')
+                            ->label(__('isReply'))
+                            ->formatStateUsing(fn(Contact $record) => $record->isReply ? __('is replied') : __('not replied'))
+                            ->color(fn(Contact $record) => $record->isReply ? 'success' : 'danger')
+                            ->badge(),
+
+                        TextEntry::make('created_at')
+                            ->label(__('Created At'))
+                            ->dateTime()
+                    ])->columns(2),
+
+            ]);
     }
 }

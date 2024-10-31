@@ -36,13 +36,9 @@ class Service extends Model
         return $this['desc_' . app()->getLocale()];
     }
 
-
-
     public function getIconPathAttribute()
     {
         return asset('storage/' . $this->icon);
     }
-
-
 
 }

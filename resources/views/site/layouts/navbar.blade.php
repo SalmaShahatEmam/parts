@@ -1,85 +1,81 @@
-<section class="header" @yield('background-image')>
-    <nav>
+<div id="app">
+    <header>
+      <div class="sub-header">
         <div class="main-container">
-            <a href="/" class="logo-container">
-                <img src="{{ asset('storage/' . $setting->logo) }}" />
-            </a>
-            <div class="element">
-                <ul>
-                    <li><a class="{{ isActiveRoute('site.home') }} " href="/">{{ __('الرئيسية') }}</a></li>
-                    <li><a class="{{ isActiveRoute('site.about') }}" href="{{ route('site.about') }}" > {{ __('من نحن') }}</a></li>
-                    <li><a class="{{ isActiveRoute('site.services') }}" href="{{ route('site.services') }}">  {{ __('خدماتنا') }} </a></li>
-                    <li><a class="{{ isActiveRoute('site.projects') }}" href="{{ route('site.projects') }}">  {{ __('المشاريع') }}</a></li>
-                    <li><a class="{{ isActiveRoute('site.blogs') }}" href="{{ route('site.blogs') }}"  >{{ __('المدونة') }}</a></li>
-                    <li><a class="{{ isActiveRoute('site.partners') }}" href="{{ route('site.partners') }}"  >{{ __('شركاء النجاح') }}</a></li>
-                    <li><a class="{{ isActiveRoute('site.regulations') }}" href="{{ route('site.regulations') }}"  >{{ __('اللوائح والسياسات') }}</a></li>
-                    <li><a class="{{ isActiveRoute('site.about') }}" href="{{ route('site.about') }}"  >{{ __('منصة العقود') }}</a></li>
-                    <li><a class="{{ isActiveRoute('site.contact') }}" href="{{ route('site.contact') }}"  >{{ __('تواصل معنا') }}</a></li>
-                </ul>
+          <div class="sub-header mka-flex-between">
+            <div class="con-links" data-aos="fade-left">
+              <ul class="mka-flex-center">
+                <li>
+                  <a href="" target="_blank">
+                    <img src="{{ asset('site/images/location.png') }}" alt="location" />
+                    <span class="color-primary1"> موقعنا : </span>
+                    <p class="color-gray">المملكة العربية السعودية</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://wa.me/0488086778889" target="_blank">
+                    <img src="{{ asset('site/images/phone.png')}}" alt="location" />
+                    <span class="color-primary1"> اتصل بنا :</span>
+                    <p class="color-gray">0488086778889</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:trading@gmail.com" target="_blank">
+                    <img src="{{ asset('site/images/mail.png')}}" alt="location" />
+                    <span class="color-primary1"> البريد الالكتروني : </span>
+                    <p class="color-gray">parts&more for trading@gmail.com</p>
+                  </a>
+                </li>
+              </ul>
             </div>
-            <div class="language">
-                <div class="dropdown">
-                    <button class="dropbtn">
-                        <i class="fa-solid fa-angle-down"></i> {{ app()->getLocale() == 'ar' ? 'AR' : 'EN' }}
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="{{ route('site.lang', app()->getLocale() == 'ar' ? 'en' : 'ar') }}">
-                            {{ app()->getLocale() == 'ar' ? 'EN' : 'AR' }}
-                        </a>
-                    </div>
-                </div>
+            <div class="header-soc-links">
+              <ul class="mka-flex-center" data-aos="fade-right">
+                <li>
+                  <a href="#"> <span> EN </span> </a>
+                </li>
+                <li>
+                  <a href="https://facebook.com" target="_blank">
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://instagram.com" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://wa.me/" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </a>
+                </li>
+              </ul>
             </div>
-            <div class="menu-div">
-                <div class="content" id="times-ican">
-                    <a href="#" title="Navigation menu" class="navicon" aria-label="Navigation">
-                        <span class="navicon__item"></span>
-                        <span class="navicon__item"></span>
-                        <span class="navicon__item"></span>
-                        <span class="navicon__item"></span>
-                    </a>
-                </div>
+            <div class="res-menu" data-aos="fade-right">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
-        </div>
-    </nav>
-    @yield('header-hero')
-
-</section>
-<!-- start menu responsive =========== -->
-<div class="bg_menu"></div>
-<div class="menu_responsive" id="menu-div">
-  <div class="element_menu_responsive">
-    <!-- <a href="/" class="logo-container">
-                <img src="images/logo.png">
-            </a> -->
-    <div class="element">
-      <ul>
-        <li><a class="{{ isActiveRoute('site.home') }} " href="/">{{ __('الرئيسية') }}</a></li>
-        <li><a class="{{ isActiveRoute('site.about') }}" href="{{ route('site.about') }}" > {{ __('من نحن') }}</a></li>
-        <li><a class="{{ isActiveRoute('site.services') }}" href="{{ route('site.services') }}">  {{ __('خدماتنا') }} </a></li>
-        <li><a class="{{ isActiveRoute('site.projects') }}" href="{{ route('site.projects') }}">  {{ __('المشاريع') }}</a></li>
-        <li><a class="{{ isActiveRoute('site.blogs') }}" href="{{ route('site.blogs') }}"  >{{ __('المدونة') }}</a></li>
-        <li><a class="{{ isActiveRoute('site.partners') }}" href="{{ route('site.partners') }}"  >{{ __('شركاء النجاح') }}</a></li>
-        <li><a class="{{ isActiveRoute('site.regulations') }}" href="{{ route('site.regulations') }}"  >{{ __('اللوائح والسياسات') }}</a></li>
-        <li><a class="{{ isActiveRoute('site.contracts.platform') }}" href="{{ route('site.contracts.platform') }}"  >{{ __('منصة العقود') }}</a></li>
-        <li><a class="{{ isActiveRoute('site.contact') }}" href="{{ route('site.contact') }}"  >{{ __('تواصل معنا') }}</a></li>
-      </ul>
-    </div>
-    <div class="language">
-      <div class="dropdown">
-        <button class="dropbtn">
-          <i class="fa-solid fa-angle-down"></i> {{ app()->getLocale() == 'ar' ? 'AR' : 'EN' }}
-        </button>
-        <div class="dropdown-content">
-          <a href="{{ route('site.lang', app()->getLocale() == 'ar' ? 'en' : 'ar') }}">
-            {{ app()->getLocale() == 'ar' ? 'EN' : 'AR' }}
-          </a>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="remove-mune">
-    <span></span>
-  </div>
-</div>
-<!-- end menu responsive =========== -->
+      <div class="sub-header-two main-container">
+        <div class="sub-header-links mka-flex-between">
+          <div class="logo" data-aos="fade-left">
+            <a href="/"> <img src="{{ asset('site/images/logo.png')}}" alt="logo" /> </a>
+          </div>
+          <div class="main-links">
+            <ul class="mka-flex-center" data-aos="fade-up">
+              <li><a href="/" class="active"> الرئيسية </a></li>
+              <li><a href="{{ route('site.about') }}"> من نحن </a></li>
+              <li><a href="{{ route('site.services') }}"> خدماتنا </a></li>
+              <li><a href="{{ route('site.branches') }}"> فروعنا </a></li>
+              <li><a href="{{ route('site.contact') }}"> تواصل معنا </a></li>
+            </ul>
+          </div>
+          <div class="main-btn mn-btn" data-aos="fade-right">
+            <a href="/services.html"> <p>اطلب منتجاتنا الان</p> </a>
+          </div>
+        </div>
+      </div>
+     @include('site.layouts.hero')
+    </header>
