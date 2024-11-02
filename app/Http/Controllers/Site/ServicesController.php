@@ -38,7 +38,24 @@ class ServicesController extends Controller
     }
     public function order_request(ServicesOrderRequest $request)
     {
-       $order= ServiceOrder::create($request->validated());
+       /*  $service = Service::findOrFail( $request->service_id);
+        $data = $request->except("_token","service_id");
+        $data['code'] = $service->slug;
+        $data['service_name_ar'] =$service->name_ar;
+        $data['service_name_en'] =$service->name_en;
+
+        $order= ServiceOrder::create($data); */
+
+        $service = Service::findOrFail($request->service_id);
+
+$data = array_merge($request->except("_token", "service_id"), [
+    'code' => $service->slug,
+    'service_name_ar' => $service->name_ar,
+    'service_name_en' => $service->name_en,
+]);
+
+$order = ServiceOrder::create($data);
+
         Notification::make()
             ->title('يريد العميل ' . $request->name . ' الحصول على خدمة ' . $request->service_name_ar)
             ->actions([

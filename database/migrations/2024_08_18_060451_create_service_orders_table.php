@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('title_message');
             $table->string('code');
             // $table->string('whatsapp');
             // $table->enum('best_contact_method', ['email', 'phone', 'whatsapp']);

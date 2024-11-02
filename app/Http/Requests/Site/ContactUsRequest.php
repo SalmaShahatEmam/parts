@@ -25,6 +25,8 @@ class ContactUsRequest extends FormRequest
             'name' => 'required:min:3',
             'email' => 'required|email:rfc,dns',
             'message' => 'required:min:3',
+            "phone" => "required",
+            "topic" =>"required|min:5"
         ];
     }
 }

@@ -17,7 +17,9 @@ return new class extends Migration
             // $table->string('last_name')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
-            // $table->string('phone')->nullable();
+            $table->string('topic')->nullable();
+
+             $table->string('phone')->nullable();
             $table->longText('message')->nullable();
             $table->boolean('isReply')->default(false);
             $table->softDeletes();

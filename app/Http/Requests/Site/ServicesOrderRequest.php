@@ -25,12 +25,13 @@ class ServicesOrderRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email:rfc,dns',
             'phone' => 'required|string|min:10|max:15',
-            'title_message' => 'required|string|min:5|max:255',
+          //  'title_message' => 'required|string|min:5|max:255',
             'message' => 'required|string|min:5',
             // 'code_virfy' => 'required|string|min:4|max:4',
-            'code' => 'required|string|min:4|max:4',
-            'service_name_ar' => 'required|string|min:5|max:255',
-            'service_name_en' => 'required|string|min:5|max:255',
+          //  'code' => 'required|string|min:4|max:4',
+        //    'service_name_ar' => 'required|string|min:5|max:255',
+//'service_name_en' => 'required|string|min:5|max:255',
+"service_id" =>"required"
 
         ];
     }

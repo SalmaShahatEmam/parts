@@ -236,7 +236,7 @@ class Settings extends SettingsPage
                                     ->clickable(false) // allow clicking to move marker
 
                             ])->columns(2),
-                        Tabs\Tab::make(__('SEO'))
+                      /*  Tabs\Tab::make(__('SEO'))
                             ->icon('heroicon-o-globe-europe-africa')
                             ->badge(6)
                             ->schema([
@@ -275,7 +275,7 @@ class Settings extends SettingsPage
                                     ->reorderable()
 
                                     ->required(),
-                            ])->columns(2),
+                            ])->columns(2),*/
 
 
                         Tabs\Tab::make(__('About Us Page'))
@@ -303,22 +303,38 @@ class Settings extends SettingsPage
 
                                                 ->required(),
 
-                                            FileUpload::make('about_image')
+                                           /*  FileUpload::make('about_image')
                                                 ->label(__('About Us image'))
+                                                ->multiple()
+
                                                 ->image()
                                                 ->disk('public')
                                                 ->directory('settings')
                                                 ->columnSpanFull()
                                                 ->preserveFilenames()
                                                 ->reorderable()
+                                                ->minFiles(3)
+                                                ->maxFiles(3) 
+                                                ->required(), */
+                                                FileUpload::make('about_image')
+                                                ->label(__('images'))
+                                                ->multiple()
+                                                ->minFiles(3)
+                                                ->maxFiles(3)
+                                                ->helperText(__('Upload 3 images for the About Us '))
+                    
+                                                ->disk('public')->directory('Service')
+                                                ->columnSpanFull()
+                                                ->preserveFilenames()
+                                                ->reorderable()
+                    
                                                 ->required(),
-
 
 
                                         ])->columns(2),
 
 
-                                    Section::make(__('Seo Information'))
+                                      /*  Section::make(__('Seo Information'))
                                         ->description(__('This is the main information about the review.'))
                                         ->collapsible(true)
 
@@ -359,7 +375,8 @@ class Settings extends SettingsPage
                                                 ->reorderable()
                                                 ->required(),
 
-                                        ])->columns(2),
+                                        ])->columns(2),*/
+                                    
                                     Section::make(__('vision Information'))
                                         ->description(__('This is the main information about the review.'))
                                         ->collapsible(true)
@@ -382,7 +399,7 @@ class Settings extends SettingsPage
                                                 ->required(),
 
                                         ])->columns(2),
-                                    Section::make(__('message Information'))
+                                   Section::make(__('message Information'))
                                         ->description(__('This is the main information about the review.'))
                                         ->collapsible(true)
 
@@ -444,19 +461,10 @@ class Settings extends SettingsPage
 
                                 ]),
 
-
-
-
-
-
-
-
-
-
                             ])->columns(2),
 
 
-                    ]),
-            ])->columns(1);
+                            ]),
+                         ])->columns(1);
     }
 }

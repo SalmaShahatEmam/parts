@@ -6,16 +6,17 @@
     </div>
     <div class="main-container">
       <div class="row">
+        @foreach($branches as $branch)
         <div class="col-12 col-sm-6 col-lg-4 mka-border" data-aos="fade-up">
           <div class="links-card">
             <ul>
               <li>
                 <img src="{{ asset('site/images/b-location.png')}}" alt="" />
-                <p>العنوان : الرياض</p>
+                <p>العنوان : {{$branch->title}}</p>
               </li>
               <li>
                 <img src="{{ asset('site/images/b-phone.png')}}" alt="" />
-                <p>رقم الهاتف : 966123456711</p>
+                <p>رقم الهاتف : {{$branch->phone}}</p>
               </li>
               <li>
                 <img src="{{ asset('site/images/b-services.png')}}" alt="" />
@@ -24,42 +25,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4 mka-border" data-aos="fade-up">
-          <div class="links-card">
-            <ul>
-              <li>
-                <img src="{{ asset('site/images/b-location.png')}}" alt="" />
-                <p>العنوان : القسيم</p>
-              </li>
-              <li>
-                <img src="{{ asset('site/images/b-phone.png')}}" alt="" />
-                <p>رقم الهاتف : 966123456711</p>
-              </li>
-              <li>
-                <img src="{{ asset('site/images/b-services.png')}}" alt="" />
-                <p>الخدمات المتوفرة : صيانة - قطع غيار</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-4 mka-border" data-aos="fade-up">
-          <div class="links-card">
-            <ul>
-              <li>
-                <img src="{{ asset('site/images/b-location.png')}}" alt="" />
-                <p>العنوان : الدمام</p>
-              </li>
-              <li>
-                <img src="{{ asset('site/images/b-phone.png')}}" alt="" />
-                <p>رقم الهاتف : 966123456711</p>
-              </li>
-              <li>
-                <img src="{{ asset('site/images/b-services.png')}}" alt="" />
-                <p>الخدمات المتوفرة : صيانة - قطع غيار</p>
-              </li>
-            </ul>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
 </section>

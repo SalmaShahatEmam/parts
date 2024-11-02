@@ -182,7 +182,8 @@
     "icon" : "الأيقونة",
     "Service Created Successfully" : "تم إنشاء الخدمة بنجاح",
     "Study Destination Updated Successfully" : "تم تحديث الوجهة الدراسية بنجاح",
-
+    "topic":"موضوع",
+    "branches":"فروعنا",
     "Service Updated Successfully" : "تم تحديث الخدمة بنجاح",
     "TouristDestination" : "الوجهات السياحية",
     "Tourist Destinations" : "الوجهات السياحية",

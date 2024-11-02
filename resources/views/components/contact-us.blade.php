@@ -3,30 +3,37 @@
       <div class="abt-header-txt" data-aos="fade-up">تواصل معنا</div>
       <div class="row">
         <div class="col-12 col-lg-6" data-aos="fade-up">
-          <form action="">
+          <form id="contactForm" action="{{ route('site.contact.request') }}" method="post">
+            @csrf
             <div class="row">
-              <div class="col-12 col-md-6">
-                <input type="text" placeholder="الاسم" />
-              </div>
-              <div class="col-12 col-md-6">
-                <input type="text" placeholder="البريد الالكتروني" />
-              </div>
+                <div class="col-12 col-md-6">
+                    <input type="text" placeholder="الاسم" name="name" />
+                    <span class="name-error error-text text-danger"></span>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input type="text" placeholder="البريد الالكتروني" name="email" />
+                    <span class="email-error error-text text-danger"></span>
+                </div>
             </div>
             <div class="row">
-              <div class="col-12 col-md-6">
-                <input type="number" placeholder="رقم الهاتف" />
-              </div>
-              <div class="col-12 col-md-6">
-                <input type="text" placeholder="الموضوع" />
-              </div>
+                <div class="col-12 col-md-6">
+                    <input type="number" placeholder="رقم الهاتف" name="phone" />
+                    <span class="phone-error error-text text-danger"></span>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input type="text" placeholder="الموضوع" name="topic" />
+                    <span class="topic-error error-text text-danger"></span>
+                </div>
             </div>
             <div class="row">
-              <div class="col-12">
-                <textarea placeholder="الرسالة"></textarea>
-              </div>
+                <div class="col-12">
+                    <textarea placeholder="الرسالة" name="message"></textarea>
+                    <span class="message-error error-text text-danger"></span>
+                </div>
             </div>
             <button type="submit">ارسال</button>
-          </form>
+        </form>
+        
         </div>
         <div class="col-12 col-lg-6" data-aos="fade-up">
           <div class="map-location">
@@ -75,3 +82,6 @@
       </div>
     </div>
   </section>
+
+
+

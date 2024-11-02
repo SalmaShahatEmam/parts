@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Project extends Model
+class Feature extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table="projects";
     protected $fillable = [
         'name_ar',
         'name_en',

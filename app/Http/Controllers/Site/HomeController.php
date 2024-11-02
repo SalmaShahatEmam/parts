@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\ContactUsRequest;
 use App\Models\Blog;
+use App\Models\Branch;
 use App\Models\Partner;
 use App\Models\Project;
 use App\Models\ServiceOrder;
@@ -26,13 +27,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-      /*   $sliders = Slider::all();
-        $services = Service::take(6)->get();
-        $projects = Project::all();
-        $partners = Partner::all();
+       $services = Service::take(2)->get();
+        $branches = Branch::take(3)->get();
+      /*  $partners = Partner::all();
         $blogs = Blog::take(4)->get();
  */
-        return view('site.home'/* , compact('sliders', 'services','projects', 'partners', 'blogs') */);
+        return view('site.home' , compact('services',"branches"/*,'projects', 'partners', 'blogs'*/) );
     }
 
     // public function service_request(Request $request)
@@ -92,7 +92,10 @@ class HomeController extends Controller
         event(new DatabaseNotificationsSent(User::role('admin')->first()));
 
 
-        return response()->json(['success' => __('تم ارسال الرسالة بنجاح وسوف يتم الرد عليك في اقرب وقت')]);
+        session()->flash('success', __('تم ارسال الرسالة بنجاح وسوف يتم الرد عليك في اقرب وقت'));
+        return redirect()->back();
+  
+      //  return response()->json(['success' => __('تم ارسال الرسالة بنجاح وسوف يتم الرد عليك في اقرب وقت')]);
     }
 
 

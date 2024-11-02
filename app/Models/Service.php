@@ -41,4 +41,8 @@ class Service extends Model
         return asset('storage/' . $this->icon);
     }
 
+    public function branches()
+    {
+        return $this->belongsToMany(Branch::class, 'branch_service');
+    }
 }

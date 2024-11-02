@@ -113,7 +113,6 @@ class ServiceResource extends Resource
                         ->schema([
 
 
-
                             FileUpload::make('icon')
                                 ->label(__('icon'))
                                 ->avatar()
@@ -126,11 +125,11 @@ class ServiceResource extends Resource
 
 
                             FileUpload::make('images')
-                            ->label(__('images'))
+                            ->label(__('image'))
                             ->multiple()
-                            ->minFiles(3)
-                            ->maxFiles(3)
-                            ->helperText(__('Upload 3 images for the service only'))
+                             ->minFiles(1)
+                            ->maxFiles(1) 
+                            ->helperText(__('Upload 1 image for the service only'))
 
                             ->disk('public')->directory('Service')
                             ->columnSpanFull()

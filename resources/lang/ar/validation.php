@@ -90,6 +90,7 @@ return [
         'array'   => 'يجب أن يحتوي :attribute على الأقل على :min عُنصرًا/عناصر.',
     ],
     'not_in'               => 'العنصر :attribute غير صحيح.',
+    "topic"=>"حقل :attribute مطلوب",
     'not_regex'            => 'صيغة :attribute غير صحيحة.',
     'numeric'              => 'يجب على :attribute أن يكون رقمًا.',
     'password'             => 'كلمة المرور غير صحيحة.',

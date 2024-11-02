@@ -68,14 +68,14 @@
 <div class="responsive-menu">
   <div class="close-menu">X</div>
   <div class="res-logo">
-    <a href="/"> <img src="./images/logo.png" alt="logo" /> </a>
+    <a href="/"> <img src="{{ asset('site/images/logo.png')}}" alt="logo" /> </a>
   </div>
   <ul class="mka-flex-center">
-    <li><a href="/"> الرئيسية </a></li>
-    <li><a href="/aboutus.html"> من نحن </a></li>
-    <li><a href="/services.html"> خدماتنا </a></li>
-    <li><a href="/branches.html"> فروعنا </a></li>
-    <li><a href="/contactus.html"> تواصل معنا </a></li>
+    <li><a href="/" class="active"> الرئيسية </a></li>
+    <li><a href="{{ route('site.about') }}"> من نحن </a></li>
+    <li><a href="{{ route('site.services') }}"> خدماتنا </a></li>
+    <li><a href="{{ route('site.branches') }}"> فروعنا </a></li>
+    <li><a href="{{ route('site.contact') }}"> تواصل معنا </a></li>
   </ul>
 </div>
 

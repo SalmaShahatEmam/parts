@@ -26,7 +26,8 @@ class PartnerResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Sliders , Team and Partners Data');
+        return null;
+       // return __('Sliders , Team and Partners Data');
     }
     public static function getModelLabel(): string
     {

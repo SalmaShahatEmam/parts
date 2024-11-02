@@ -26,12 +26,12 @@ class StatsOverview extends BaseWidget
         return [
             Stat::make(__('Total Services'), Service::count())
                 ,
-            Stat::make(__('Total Projects'), Project::count()),
+        //    Stat::make(__('Total Projects'), Project::count()),
             Stat::make(__('Total Blogs'), Blog::count()),
-            Stat::make(__('Total Partners'), Partner::count()),
-            Stat::make(__('Total Sliders'), Slider::count()),
-            Stat::make(__('Total regulations'), Regulations::count()),
-            Stat::make(__('Total Regulation Category'), RegulationCategory::count()),
+            //Stat::make(__('Total Partners'), Partner::count()),
+          //  Stat::make(__('Total Sliders'), Slider::count()),
+          //  Stat::make(__('Total regulations'), Regulations::count()),
+          //  Stat::make(__('Total Regulation Category'), RegulationCategory::count()),
             Stat::make(__('Total Orders Services'), ServiceOrder::count()),
             Stat::make(__('Total Contacts Us'), Contact::count()),
             Stat::make(__('Total Settings'), Setting::count()),

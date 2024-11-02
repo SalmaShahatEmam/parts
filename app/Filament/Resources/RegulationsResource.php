@@ -29,7 +29,7 @@ class RegulationsResource extends Resource
     public static function getNavigationGroup(): ?string
 
     {
-        return __('Regulation Data');
+        return null; //return __('Regulation Data');
     }
     public static function getModelLabel(): string
     {

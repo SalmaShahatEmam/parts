@@ -79,10 +79,10 @@ class ServiceOrderResource extends Resource
                     ->label(__('service_name'))
                     ->required()
                     ->minLength(10),
-                TextInput::make('title_message')
+             /*    TextInput::make('title_message')
                     ->label(__('title_message'))
                     ->required()
-                    ->minLength(10),
+                    ->minLength(10), */
                 Textarea::make('message')
                     ->label(__('message'))
                     ->required()
@@ -129,11 +129,11 @@ class ServiceOrderResource extends Resource
                     ->label(__('service_name'))
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('title_message')
+         /*        Tables\Columns\TextColumn::make('title_message')
                     ->label(__('title_message'))
                     ->searchable()
                     ->sortable(),
-
+ */
 
                 Tables\Columns\TextColumn::make('message')
                     ->label(__('message'))
