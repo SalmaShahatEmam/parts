@@ -64,11 +64,11 @@
           </div>
           <div class="main-links">
             <ul class="mka-flex-center" data-aos="fade-up">
-              <li><a href="/" @if( request()->is('/')) class="active" @endif >{{ __('home') }}</a></li>
-              <li><a href="{{ route('site.about') }}"  @if( request()->is('about')) class="active" @endif >{{ __('about us') }}</a></li>
-              <li><a href="{{ route('site.services') }}"  @if( request()->is('services')) class="active" @endif >{{ __('our services') }}</a></li>
-              <li><a href="{{ route('site.branches') }}"  @if( request()->is('branches')) class="active" @endif >{{ __('our branches') }}</a></li>
-              <li><a href="{{ route('site.contact') }}" @if( request()->is('contact')) class="active" @endif >{{ __('contact us') }}</a></li>
+              <li><a href="/" @if( request()->is('/')) class="active" @endif >{{ __('Home') }}</a></li>
+              <li><a href="{{ route('site.about') }}"  @if( request()->is('about')) class="active" @endif >{{ __('About Us') }}</a></li>
+              <li><a href="{{ route('site.services') }}"  @if( request()->is('services')) class="active" @endif >{{ __('Our Services') }}</a></li>
+              <li><a href="{{ route('site.branches') }}"  @if( request()->is('branches')) class="active" @endif >{{ __('Our Branches') }}</a></li>
+              <li><a href="{{ route('site.contact') }}" @if( request()->is('contact')) class="active" @endif >{{ __('Contact Us') }}</a></li>
               <li>
                 <a href="{{ route('site.lang', app()->getLocale() == 'ar' ? 'en' : 'ar') }}">
                     {{ app()->getLocale() == 'ar' ? __('English') : __('Arabic') }}

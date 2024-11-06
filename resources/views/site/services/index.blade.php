@@ -49,7 +49,7 @@ $(document).ready(function() {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "تم إرسال رسالتك بنجاح",
+                    title: "{{ __('services request sended successfully') }}",
                     showConfirmButton: false,
                     timer: 1500
                 });

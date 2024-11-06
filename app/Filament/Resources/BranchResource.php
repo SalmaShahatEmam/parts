@@ -38,22 +38,35 @@ class BranchResource extends Resource
             ->schema([
 
                 Forms\Components\TextInput::make('title_ar')
+                ->label(__('title_ar'))
+
                     ->required(),
                     Forms\Components\TextInput::make('title_en')
+                    ->label(__('title_en'))
+
                     ->required(),
                 Forms\Components\TextInput::make('address')
+                ->label(__('address'))
+
                     ->required(),
                 Forms\Components\TextInput::make('phone')
+                ->label(__('phone'))
+
                     ->required(),
                 Forms\Components\TextInput::make('lng')
+                ->label(__('خط طول'))
+
                     ->numeric()
                     ->required(),
                 Forms\Components\TextInput::make('lat')
+                ->label(__('خط عرض'))
+
                     ->numeric()
                     ->required(),
-                    MultiSelect::make('services') // Use MultiSelect for multiple selections
-                ->relationship('services', 'name_en') // Using name_en for the label
-                ->label('Select Services')
+                    MultiSelect::make('services')
+                    // Use MultiSelect for multiple selections
+                ->relationship('services', 'name_'.app()->getLocale()) // Using name_en for the label
+                ->label(__('Select Services'))
                 ->required(),
         ]);
 

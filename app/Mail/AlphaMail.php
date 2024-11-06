@@ -25,7 +25,7 @@ class AlphaMail extends Mailable
 
     public function build()
     {
-        return $this->markdown('mail.reply-contact')
+        return $this->subject(__('replay from Parts and More for Trading'))->markdown('mail.reply-contact')
               ->with('data', $this->data);
     }
 }
