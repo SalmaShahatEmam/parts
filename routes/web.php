@@ -1,9 +1,14 @@
 <?php
+use Illuminate\Support\Facades\Artisan;
 
+use App\Mail\BlogNotificationMail;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Site\BlogController;
-use App\Http\Controllers\Site\BrancheController;
 use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\BrancheController;
 use App\Http\Controllers\Site\ProjectController;
 use App\Http\Controllers\Site\ServicesController;
 use App\Http\Controllers\Site\StaticPageController;
@@ -20,13 +25,41 @@ use App\Http\Controllers\Site\ContractsPlatformController;
 |
 */
 
+Route::get('/run-queue',function(){
+    Artisan::call('queue:work', [
+        '--tries' => 3,
+        '--timeout' => 60,
+    ]);
+} );
+
+Route::get('/run-optimize',function(){
+    Artisan::call('optimize');
+
+} );
+
+Route::post('/toggle-language', function (Request $request) {
+
+
+    $lng = app()->getLocale();
+
+    if($lng=='ar'){
+        session()->put('lang', 'en');
+
+    }else{
+        session()->put('lang', 'ar');
+
+    }
+
+
+    return response()->json(['success' => true, 'locale' => $lng]);
+});
 Route::namespace('Site')->name('site.')->middleware('lang')->group(function () {
     // -------------------------------- Home Page Routes --------------------------------//
     Route::get('/', [HomeController::class,'index'])->name('home');
     Route::post('service-request', [HomeController::class,'service_request'])->name('service.request');
     Route::post('contact-request', [HomeController::class,'contact_request'])->name('contact.request');
     Route::get('branches', [BrancheController::class,'index'])->name('branches');
-
+    Route::post('blog/user',[BlogController::class,"blogUser"])->name('blog.user');
     //-------------------------------- End Home Page Routes ------------------------------//
 
 
@@ -51,6 +84,10 @@ Route::namespace('Site')->name('site.')->middleware('lang')->group(function () {
     Route::get('contact', [StaticPageController::class,'contact'])->name('contact');
     //---------------------------------- End Contact Page Routes ------------------------------//
 
+    Route::get('email/send',function(){
+        Mail::to("salmaemam52@gmail.com")->send(new BlogNotificationMail(['name'=>"salma","code"=>"12365"]));
+
+    });
 
 
     //----------------------------------- Projects Page Routes ------------------------------//
@@ -76,26 +113,8 @@ Route::namespace('Site')->name('site.')->middleware('lang')->group(function () {
     //------------------------------------ Contracts Platform Page Routes ------------------------------//
     Route::get('contracts-platform', [ContractsPlatformController::class,'index'])->name('contracts.platform');
     //------------------------------------ End Contracts Platform Page Routes ------------------------------//
-
-
-
-
-
     // Route::get('courses', [StaticPageController::class,'courses'])->name('courses');
-
-
-
     //-------------------------------- End Static Page Routes ------------------------------//
-
-
-
-
-
-
-
-
-
-
     Route::get('/lang/{lang}', [HomeController::class,'lang'])->name('lang');
 });
 

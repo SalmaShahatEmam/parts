@@ -7,9 +7,12 @@ use App\Models\Blog;
 use Filament\Tables;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
+use App\Models\BlogUsers;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use App\Mail\BlogNotificationMail;
 use Filament\Forms\Components\Grid;
+use Illuminate\Support\Facades\Mail;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
@@ -109,8 +112,6 @@ class BlogResource extends Resource
 
                         ->schema([
 
-
-
                             FileUpload::make('image')
                                 ->label(__('image'))
                                 ->disk('public')->directory('blogs')
@@ -120,10 +121,6 @@ class BlogResource extends Resource
 
                                 ->required(),
                         ]),
-
-
-
-
                 ]),
             ]);
     }
@@ -202,4 +199,14 @@ class BlogResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
+   /*  public function afterSave()
+{
+    $blog = $this->record;
+    $users =  BlogUsers::all();
+    dd('Triggered');
+    foreach ($users as $user) {
+        Mail::to($user->email)->send(new BlogNotificationMail($blog));
+    }
+} */
 }

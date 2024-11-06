@@ -19,17 +19,17 @@ header {
 }
 
 .con-links a img {
-  width: 22px;
-  height: 22px;
+    width: 18px;
+    height: 18px;
 }
 
 .con-links a p {
-  font-size: 18px;
+  font-size: 14px;
   transition: 0.4s;
 }
 
 .con-links a span {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .con-links a:hover p {

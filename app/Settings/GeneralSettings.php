@@ -34,10 +34,13 @@ class GeneralSettings extends Settings
     public array $meta_keywords_en;  // Updated to array
     public string $about_desc_ar;
     public string $about_desc_en;
-    public string $about_image;
+    public  string| array  $about_image;
     public string $seo_desc_ar;
     public string $seo_desc_en;
     public string $seo_image;
+/*     public float $lat;   // Add latitude as float
+    public float $lng;   */
+
     public string $vision_ar;
     public string $vision_en;
     public string $message_ar;

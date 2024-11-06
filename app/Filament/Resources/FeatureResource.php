@@ -27,7 +27,7 @@ class FeatureResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Feature, Blog, and Services Data');
+        return __('Features Data');
     }
 
     public static function getModelLabel(): string
@@ -45,7 +45,7 @@ class FeatureResource extends Resource
         return $form
             ->schema([
                 Grid::make()->schema([
-                    Section::make(__('Features '))
+                    Section::make(__('Features'))
                         ->description(__('Why CHoose parts and more'))
                         ->collapsible(true)
                         ->schema([
@@ -72,7 +72,7 @@ class FeatureResource extends Resource
                                 ->unique(Feature::class, 'slug', ignoreRecord: true)
                                 ->disabled()
                                 ->dehydrated()
-                                ->hidden(),
+
                         ])->columns(3),
 
                     Section::make(__('Description Information'))
@@ -101,7 +101,7 @@ class FeatureResource extends Resource
                             FileUpload::make('image')
                                 ->label(__('Image'))
                                 ->disk('public')
-                                ->directory('projects')
+                                ->directory('features')
                                 ->columnSpanFull()
                                 ->preserveFilenames()
                                 ->reorderable()

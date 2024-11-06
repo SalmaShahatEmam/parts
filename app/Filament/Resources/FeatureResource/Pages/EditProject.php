@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\ProjectResource\Pages;
+namespace App\Filament\Resources\FeatureResource\Pages;
 
 use App\Filament\Resources\ProjectResource;
 use Filament\Actions;

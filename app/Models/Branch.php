@@ -20,7 +20,7 @@ class Branch extends Model
 
     public function getTitleAttribute()
     {
-        return $this['title_' . app()->getLocale()];
+        return $this->getAttribute('title_' . app()->getLocale());
     }
 
 

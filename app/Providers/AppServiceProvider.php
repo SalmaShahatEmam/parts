@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Blog;
+use App\Observers\BlogObserver;
 use App\Settings\GeneralSettings;
 use Illuminate\Support\ServiceProvider;
 use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
@@ -40,6 +42,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('site.layouts.footer', $composeViewWithSettings);
         view()->composer('site.home', $composeViewWithSettings);
         view()->composer('site.about', $composeViewWithSettings);
+
+
+      
+            Blog::observe(BlogObserver::class);
+
 
     }
 }

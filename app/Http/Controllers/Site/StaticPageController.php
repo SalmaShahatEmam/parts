@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Models\Blog;
 use App\Models\Team;
+use App\Models\Feature;
 use App\Models\Partner;
 use App\Models\Project;
 use App\Models\Service;
@@ -22,32 +23,17 @@ class StaticPageController extends Controller
 {
     public function about()
     {
-        $teams = Team::all();
-        return view('site.about', compact('teams'));
+        $features = Feature::all();
+
+        return view('site.about', compact('features'));
     }
 
 
-
-
-
-    public function partners()
-    {
-        $partners = Partner::all();
-        return view('site.partners.index', compact('partners'));
-    }
-
-    public function regulations()
-    {
-        $regulationsCategory = RegulationCategory::whereHas('regulations')->with('regulations')->withCount('regulations')->latest()->get();
-
-        return view('site.regulations.index', compact('regulationsCategory'));
-    }
-
-   
 
 
     public function contact()
     {
         return view('site.contact');
     }
+
 }

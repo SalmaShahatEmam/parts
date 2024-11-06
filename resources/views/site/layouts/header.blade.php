@@ -10,6 +10,7 @@
     <meta name="theme-color" content="" />
     <!-- Windows Phone -->
     <meta name="msapplication-navbutton-color" content="" />
+    <link rel="icon" href="{{ Storage::disk('public')->url(getSetting('favicon')) }}" type="image/x-icon">
 
     <!-- Bootstrap cdn -->
     <link
@@ -18,6 +19,17 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+  />
+
+  <!-- Animate.css -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 
     <!-- Fontawesome cdn -->
     <link

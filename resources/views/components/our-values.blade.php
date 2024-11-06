@@ -3,39 +3,29 @@
       <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up">
         <div class="about-card">
           <div class="img">
-            <img src="./images/ab-img-1.png" alt="img" />
+            <img src="{{ asset('site/images/ab-img-1.png') }}" alt="img" />
           </div>
-          <h2>رؤيتنا</h2>
-          <p>
-            أن نكون الرائدين في توفير قطع غيار السيارات بأعلى معايير الجودة
-            والموثوقية، وأن نساهم في تطوير قطاع السيارات عبر تقديم منتجات
-            مبتكرة
-          </p>
+          <h2>{{ __('vision') }}</h2>
+          <p>{{ getSetting('vision_'.app()->getLocale()) }}  </p>
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up">
         <div class="about-card">
           <div class="img">
-            <img src="./images/ab-img-2.png" alt="img" />
+            <img src="{{ asset('site/images/ab-img-2.png') }}" alt="img" />
           </div>
-          <h2>رسالتنا</h2>
-          <p>
-            نلتزم بتوفير أفضل أنواع قطع غيار السيارات المستوردة والمحلية
-            بالجملة والتجزئة من خلال فروعنا المنتشرة، مع التركيز على تقديم
-            حلول فعالة وبأسعار تنافسية
-          </p>
+          <h2>{{ __('message') }}</h2>
+          <p>{{ getSetting('message_'.app()->getLocale()) }}  </p>
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up">
         <div class="about-card">
           <div class="img">
-            <img src="./images/ab-imf-3.png" alt="img" />
+            <img src="{{ asset('site/images/ab-imf-3.png') }}" alt="img" />
           </div>
-          <h2>أهدافنا</h2>
-          <p>
-            تحقيق أعلى مستويات الجودة في قطع غيار السيارات لضمان موثوقية
-            الأداء وطول العمر الافتراضي للمنتجات.
-          </p>
+          <h2>{{ __('Goals') }}</h2>
+
+          <p>{{ getSetting('value_desc_'.app()->getLocale()) }}  </p>
         </div>
       </div>
     </div>

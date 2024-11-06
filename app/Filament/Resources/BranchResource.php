@@ -36,9 +36,10 @@ class BranchResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title_en')
-                    ->required(),
+
                 Forms\Components\TextInput::make('title_ar')
+                    ->required(),
+                    Forms\Components\TextInput::make('title_en')
                     ->required(),
                 Forms\Components\TextInput::make('address')
                     ->required(),
@@ -55,7 +56,7 @@ class BranchResource extends Resource
                 ->label('Select Services')
                 ->required(),
         ]);
-        
+
     }
 
     public static function table(Table $table): Table

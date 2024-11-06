@@ -124,7 +124,7 @@
     padding-left: 0px;
     padding-right: 0px;
   }
-  /* 
+  /*
   .abs-img img {
     display: none;
   } */
@@ -214,6 +214,15 @@
 @media (max-width: 768px) {
   .custom-hero img.ctm-img {
     left: -40px;
+  }
+  .abt-header-txt {
+    padding-right: 70px;
+    text-align: right;
+    width: 100%;
+  }
+
+  .abt-header-txt::before {
+    right: 30px;
   }
 
   section.about-cards {
@@ -431,6 +440,11 @@
 
   .about-company-desc p {
     font-size: 18px;
+  }
+
+  .abt-header-txt {
+    font-size: 20px;
+    font-family: "'font_light'";
   }
 
   .about-company-desc ul li p {

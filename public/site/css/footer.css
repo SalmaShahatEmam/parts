@@ -71,14 +71,14 @@ footer .desc {
   transform: rotate(360deg);
 }
 
-.footer-headeing {
+.footer-heading {
   color: var(--primary3);
   font-size: 24px;
   position: relative;
   margin-bottom: 30px;
 }
 
-.footer-headeing::before {
+.footer-heading::before {
   content: "";
   position: absolute;
   right: 0;

@@ -1,5 +1,5 @@
 @extends('site.layouts.app')
-@section('title', __('خدماتنا'))
+@section('title', __('خدماتنا').'|'.getSetting('site_name_'.app()->getLocale()))
 
 
 
@@ -36,7 +36,7 @@ $(document).ready(function() {
     $('#service_request').on('submit', function(event) {
      //   alert("Fre");
         event.preventDefault(); // Prevent the default form submission
-        
+
         // Clear previous error messages
         $('.error-text').text('');
 

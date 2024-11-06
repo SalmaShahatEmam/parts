@@ -906,3 +906,39 @@ section.barnches-cards-container {
 .cont-card:hover::before {
   width: 100%;
 }
+section.our-services .img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .links-card ul p {
+    width: 75%;
+  }
+
+  .benafite-card {
+    border: 1px solid #e9e9e978;
+  }
+
+  .footer-heading::before {
+    width: 32px;
+    height: 3px;
+  }
+
+  .abt-header-txt::before {
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .abt-header-txt {
+    padding-right: 70px;
+  }
+
+
+  .barnches-cards-container .card {
+    margin-bottom: 20px;
+  }
+
+  #map{
+    margin-bottom: 50px;
+  }

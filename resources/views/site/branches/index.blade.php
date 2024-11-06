@@ -1,10 +1,9 @@
 @extends('site.layouts.app')
-@section('title', __('فروعنا'))
+@section('title', __('فروعنا').'|'.getSetting('site_name_'.app()->getLocale()))
 
 
 @section('content')
-
-<x-branches/>
+<x-branches-second :branches="$branches"/>
 
 @endsection
 

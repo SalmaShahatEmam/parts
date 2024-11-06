@@ -198,7 +198,6 @@ class Settings extends SettingsPage
                                 TextInput::make('linkedin')
                                     ->label(__('linkedin'))
                                     ->autofocus()
-
                                     ->url()
                                     // ->rules([
                                     //     fn(): Closure => function (string $attribute, $value, Closure $fail) {
@@ -234,8 +233,22 @@ class Settings extends SettingsPage
                                     ->draggable(false) // allow dragging to move marker
 
                                     ->clickable(false) // allow clicking to move marker
-
+                                    ->afterStateUpdated(function ($state, callable $set) {
+                                        // Set lat and lng based on map selection
+                                        $set('lat', $state['lat']);
+                                        $set('lng', $state['lng']);
+                                    }),
                             ])->columns(2),
+                            TextInput::make('lat')
+                            ->label('Latitude')
+                            ->hidden()
+                            ->required(),
+
+                        TextInput::make('lng')
+                            ->label('Longitude')
+                            ->hidden()
+                            ->required(),
+
                       /*  Tabs\Tab::make(__('SEO'))
                             ->icon('heroicon-o-globe-europe-africa')
                             ->badge(6)
@@ -305,7 +318,6 @@ class Settings extends SettingsPage
 
                                            /*  FileUpload::make('about_image')
                                                 ->label(__('About Us image'))
-                                                ->multiple()
 
                                                 ->image()
                                                 ->disk('public')
@@ -314,21 +326,21 @@ class Settings extends SettingsPage
                                                 ->preserveFilenames()
                                                 ->reorderable()
                                                 ->minFiles(3)
-                                                ->maxFiles(3) 
+                                                ->maxFiles(3)
                                                 ->required(), */
-                                                FileUpload::make('about_image')
+                                                /* FileUpload::make('about_image')
                                                 ->label(__('images'))
                                                 ->multiple()
                                                 ->minFiles(3)
-                                                ->maxFiles(3)
+
                                                 ->helperText(__('Upload 3 images for the About Us '))
-                    
+
                                                 ->disk('public')->directory('Service')
                                                 ->columnSpanFull()
                                                 ->preserveFilenames()
                                                 ->reorderable()
-                    
-                                                ->required(),
+
+                                                ->required(), */
 
 
                                         ])->columns(2),
@@ -376,7 +388,7 @@ class Settings extends SettingsPage
                                                 ->required(),
 
                                         ])->columns(2),*/
-                                    
+
                                     Section::make(__('vision Information'))
                                         ->description(__('This is the main information about the review.'))
                                         ->collapsible(true)
@@ -437,12 +449,12 @@ class Settings extends SettingsPage
 
                                         ->schema([
 
-                                            RichEditor::make('value_desc_ar')
+                                            Textarea::make('value_desc_ar')
                                                 ->label(__('Description (Arabic)'))
                                                 ->autofocus()
                                                 ->minLength(3)
                                                 ->required(),
-                                            RichEditor::make('value_desc_en')
+                                                Textarea::make('value_desc_en')
                                                 ->label(__('Description (English)'))
                                                 ->autofocus()
                                                 ->minLength(3)
